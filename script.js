@@ -1,12 +1,17 @@
-function loadVideo(videoPath) {
-    var videoContainer = document.getElementById("video-container");
-    videoContainer.innerHTML = 
-        <video controls>
-            <source src="https://www.youtube.com/watch?v=l1EssrLxt7E" type="video/mp4"></source>
-        </video>;
+function playVideo(videoId) {
+    // Show the overlay
+    document.querySelector('.overlay').style.display = 'block';
+    // Embed the video
+    var iframe = document.createElement('iframe');
+    iframe.setAttribute('src', 'https://www.youtube.com/embed/' + videoId + '?autoplay=1');
+    iframe.setAttribute('width', '100%');
+    iframe.setAttribute('height', '100%');
+    iframe.setAttribute('frameborder', '0');
+    document.querySelector('.video-container').appendChild(iframe);
 }
-document.getElementById("html-intro").addEventListener("click", function() {
-    loadVideo("https://www.youtube.com/watch?v=l1EssrLxt7E");
-});
 
-
+function closeVideo() {
+    //close the overlay and video
+    document.querySelector('.overlay').style.display = 'none';
+    document.querySelector('.video-container').innerHTML = '';
+}
